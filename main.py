@@ -1,10 +1,11 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from flask_cors import CORS
 import joblib
 
 app = FastAPI()
 model = joblib.load("film_model.pkl")
-
+CORS(app)
 class FilmFeatures(BaseModel):
     R: int
     G: int
